@@ -34,3 +34,22 @@ inputs.forEach((inp, index) => {
     });
 });
 
+//Function to navigate the input fields through buttons.
+const navigate = () => {
+
+    inputs.forEach((inp, index) => {
+        inp.addEventListener("keyup", (event) => {
+
+            ; if (event.key === "Backspace" && index > 0) {
+                inputs[index - 1].focus();
+
+            } else if (event.key === "ArrowRight" && index < (inputs.length - 1)) {
+                inputs[index + 1].focus();
+
+            } else if (event.key === "LeftArrow" && index > 0) {
+                inputs[index - 1].focus()
+            }
+        });
+    });
+
+}
