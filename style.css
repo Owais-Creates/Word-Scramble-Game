@@ -71,7 +71,7 @@ h1 {
     margin-left: 5px;
 }
 
-.chances {
+.chance {
     height: 10px;
     width: 10px;
     border-radius: 50%;
@@ -133,8 +133,37 @@ button {
 
 }
 
+.hide{
+    display:  none;
+}
+
 button:hover {
     background-color: #7429C6;
     transition: 0.3s ease;
     box-shadow: #7429C6;
+}
+
+.result-container{
+    width: 400px;
+    border-radius: 20px;
+    background-color: #030616;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.lost-container{
+    height: 400px;
+    width: 400px;
+    background-color: #000;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emoji{
+    background-color: transparent;
 }
