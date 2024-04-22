@@ -1,7 +1,29 @@
 const questions = [
-    { jumbledWord: "dwlro", answer: "world" },
-    { jumbledWord: "neics", answer: "since" },
-    { jumbledWord: "betal", answer: "table" }
+    {
+        jumbledWord: "dwlro",
+        answer: "world",
+        hint: "This word describes the entire planet and everything on it."
+    },
+    {
+        jumbledWord: "neics",
+        answer: "since",
+        hint: "This word often introduces a condition or a hypothetical situation."
+    },
+    {
+        jumbledWord: "betal",
+        answer: "table",
+        hint: "It's a piece of furniture that gathers around it both sustenance and stories."
+    },
+    {
+        jumbledWord: "ednry",
+        answer: "nerdy",
+        hint: "This word often describes someone who is deeply passionate about something."
+    },
+    {
+        jumbledWord: "fulfb",
+        answer: "bluff",
+        hint: "Often used as a term for deception or misleading action."
+    },
 ];
 
 
@@ -21,7 +43,9 @@ let remainingTries = document.querySelector(".remaining-tries");
 let subContainer = document.querySelector(".sub-container");
 let lostContainer = document.querySelector("#lost-game");
 let importantNote = document.querySelector(".note");
-
+let hint = document.querySelector(".hint");
+let hintContainer = document.querySelector(".hint-container");
+let hintSentence = document.querySelector(".hint-sentence");
 
 //Buttons
 let resetBtn = document.querySelector(".reset");
@@ -35,9 +59,17 @@ let hiddenBtn = document.querySelector("#hidden");
 // Show the current question
 const showQuestion = () => {
     scrambledQuestion.innerText = questions[current].jumbledWord;
+
+    //Adding hint dynamically
+    hintSentence.innerText = questions[current].hint;
+
 };
 showQuestion();
 
+// Showing and hiding the hint when the button is clicked.
+hint.addEventListener("click", () => {
+    hintSentence.classList.toggle("hidden-hint")
+})
 
 //Showing the remaining tries.
 remainingTries.innerText = tries;
@@ -62,15 +94,19 @@ inputs.forEach((inp, index) => {
             result += value;
             inp.disabled = true;
 
-            const allFilled = Array.from(inputs).every(inp => inp.disabled);
-            if (allFilled) {
-                guessBtn.disabled = false;
-                guessBtn.addEventListener("click", checkAnswer);
-            }
-
+            checkInputs();
         }
     });
 });
+
+//Function which checks if all the input are filled before submitting.
+const checkInputs = () => {
+    const allFilled = Array.from(inputs).every(inp => inp.disabled);
+    if (allFilled) {
+        guessBtn.disabled = false;
+        guessBtn.addEventListener("click", checkAnswer);
+    }
+}
 
 //Function to check whether the inputted answer is correct or not.
 const checkAnswer = () => {
@@ -80,6 +116,7 @@ const checkAnswer = () => {
 
         if (current < questions.length - 1) {
             current++;
+            hintSentence.classList.add("hidden-hint");
             showQuestion();
         }
 
@@ -88,6 +125,7 @@ const checkAnswer = () => {
             showResult();
             importantNote.classList.add('hide');
             hiddenBtn.classList.remove('hide');
+            hintContainer.style.display = "none";
 
         }
 
@@ -103,10 +141,9 @@ const checkAnswer = () => {
         chance--;
 
         if (tries == 0) {
-            lostGame();
+            gameOver();
         }
     }
-
     resetInputs();
     result = "";
 };
@@ -124,12 +161,13 @@ const showResult = () => {
 
 
 //Function when you loose the game
-const lostGame = () => {
-    lostContainer.innerHTML = `<h1>Sorry You have lost <span class="emoji" >😞</span>!!!</h1>`
+const gameOver = () => {
+    lostContainer.innerHTML = `<h1>Sorry You have lost!!</h1>`
     lostContainer.classList.add("lost-container");
     subContainer.style.display = "none";
     importantNote.style.display = "none";
     hiddenBtn.classList.remove("hide");
+    hintContainer.style.display = "none";
 }
 
 

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Word Guess</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
 </head>
 
 <body>
@@ -13,36 +15,49 @@
 
     <div class="main-container">
 
-        <div class="sub-container">
+        <div class="play-section">
 
-            <h1>Word Scramble</h1>
+            <div class="sub-container">
 
-            <div class="ques-container"></div>
+                <h1>Word Scramble</h1>
 
-            <div class="tries">
+                <div class="ques-container"></div>
 
-                <p>Tries ( 5 / <span class="remaining-tries"></span> ) : </p>
+                <div class="tries">
 
-                <div class="chances-container">
-                    <div class=" chance chance1"></div>
-                    <div class=" chance chance2"></div>
-                    <div class=" chance chance3"></div>
-                    <div class=" chance chance4"></div>
-                    <div class=" chance chance5"></div>
+                    <p>Tries ( 5 / <span class="remaining-tries"></span> ) : </p>
+
+                    <div class="chances-container">
+                        <div class=" chance chance1"></div>
+                        <div class=" chance chance2"></div>
+                        <div class=" chance chance3"></div>
+                        <div class=" chance chance4"></div>
+                        <div class=" chance chance5"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="input-fields">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
+
+                <div class="input-fields">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                    <input type="text">
+                    <input class="right-most-input" type="text">
+                </div>
+
+                <div class="btn-container">
+
+                    <button class="button guess">Guess</button>
+                    <button class="button reset">Reset</button>
+
+                </div>
+
             </div>
 
-            <div class="btn-container">
+            <div class="hint-container">
 
-                <button class="button guess">Guess</button>
-                <button class="button reset">Reset</button>
+                <h2 class="hint">Hint *</h2>
+
+                    <p class="hint-sentence hidden-hint "></p>
 
             </div>
 
@@ -50,12 +65,13 @@
 
         <h2 class="note">Note* - To increase the difficulty of the game once your each input gets registerd you are not
             allowed to go
-            back so think wisely.</h2>
+            back so think wisely.
+        </h2>
 
         <div id="lost-game"> </div>
 
         <button class="button reset hide " id="hidden">Reset</button>
-        
+
     </div>
 
 
