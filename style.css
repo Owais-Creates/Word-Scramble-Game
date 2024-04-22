@@ -214,6 +214,61 @@ button:hover {
     align-items: center;
 }
 
+@media only screen 
+  and (min-device-width: 319px) 
+  and (max-device-width: 568px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
 
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .hint-container {
+            display: none;
+        }
+    
+        .note {
+            display: none;
+        }
+    
+        .main-container {
+            height: 100vh;
+            width: 100%;
+            background-color: red;
+        }
+    
+        .ques-container{
+            text-align: center;
+        }
+    
+        .sub-container {
+            width: 320px;
+        }
+    
+        .input-fields {
+            margin-left: -10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .input-fields>input {
+            margin-left: -10px;
+        }
+    
+        .right-most-input{
+            margin-right: -16px;
+        }
+    
+        .guess{
+            margin-left: -15px;
+            margin-right: 5px;
+        }
+    
+    }
 
 
